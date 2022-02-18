@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "t14-tts",
-    "slug": "t14-tts",
+    "name": "t14-tts-Janne-F",
+    "slug": "t14-tts-janne-f",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }
