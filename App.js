@@ -3,44 +3,31 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   SafeAreaView,
-  FlatList,
   TextInput,
   Text,
   View,
   Pressable,
 } from "react-native";
-import * as Contacts from "expo-contacts";
+import * as Speech from "expo-speech";
 
 export default function App() {
-  const [contacts, setContacts] = useState([]);
+  const [text, setText] = React.useState();
 
-  const handleGetContacts = async () => {
-    const { status } = await Contacts.requestPermissionsAsync();
-
-    if (status === "granted") {
-      const { data } = await Contacts.getContactsAsync({
-        fields: [Contacts.Fields.PhoneNumbers],
-      });
-
-      setContacts(data);
-    }
+  const handleSpeakText = () => {
+    Speech.speak(text);
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-            <TextInput
-        style={styles.input}
-        onChangeText={setKeyword}
-        value={keyword}
-      />
+      <TextInput style={styles.input} onChangeText={setText} value={text} />
       <Pressable
         style={styles.button}
-        onPress={handleGetContacts}
+        onPress={handleSpeakText}
         title="Show"
         accessibilityLabel="Show"
       >
-        <Text style={styles.text}>Get Contacts</Text>
+        <Text style={styles.text}>Press to hear text</Text>
       </Pressable>
     </SafeAreaView>
   );
